@@ -3,7 +3,7 @@
 import { useSidebarConfig } from "@/hooks/use-sidebar-config";
 import type { DashboardRole } from "@/config/sidebar";
 import * as React from "react";
-import { Building2 } from "lucide-react";
+import { Icons } from "@/components/icons";
 import { NavMain, NavUser } from "@/components/ui/sidebar";
 import {
   Sidebar,
@@ -37,7 +37,7 @@ export function DashboardSidebar({
     <Sidebar collapsible={config.collapsible}>
       <SidebarHeader>
         <SidebarBrand
-          logo={Building2}
+          logo={Icons.building}
           title="GASAK"
           subtitle="Dashboard Management"
         />

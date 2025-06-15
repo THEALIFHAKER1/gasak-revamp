@@ -1,4 +1,4 @@
-import type { LucideIcon } from "lucide-react";
+import type { Icon } from "@/components/icons";
 
 export interface SidebarUser {
   name: string;
@@ -9,7 +9,7 @@ export interface SidebarUser {
 export interface SidebarNavItem {
   title: string;
   url: string;
-  icon?: LucideIcon;
+  icon?: Icon;
   isActive?: boolean;
   items?: {
     title: string;

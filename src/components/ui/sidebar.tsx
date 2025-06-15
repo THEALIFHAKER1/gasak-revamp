@@ -3,14 +3,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import {
-  PanelLeftIcon,
-  ChevronsUpDown,
-  LogOut,
-  Settings,
-  ChevronRight,
-  type LucideIcon,
-} from "lucide-react";
+import { Icons, type Icon } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -291,7 +284,8 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <PanelLeftIcon />
+      {" "}
+      <Icons.panelLeft />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
@@ -762,7 +756,7 @@ function NavMain({
   items: {
     title: string;
     url: string;
-    icon?: LucideIcon;
+    icon?: Icon;
     isActive?: boolean;
     items?: {
       title: string;
@@ -820,7 +814,7 @@ function NavMain({
                   >
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
-                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    <Icons.chevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
@@ -882,7 +876,7 @@ function NavUser({
                 <span className="truncate font-medium">{user.name}</span>
                 <span className="truncate text-xs">{user.email}</span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4" />
+              <Icons.chevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -891,8 +885,9 @@ function NavUser({
             align="end"
             sideOffset={4}
           >
+            {" "}
             <DropdownMenuItem onClick={handleSettings}>
-              <Settings />
+              <Icons.settings />
               Settings
             </DropdownMenuItem>
             <DropdownMenuSeparator />
@@ -900,7 +895,8 @@ function NavUser({
               onClick={handleLogout}
               className="text-destructive bg-destructive/10 hover:bg-destructive/20 focus:bg-destructive/20 focus:text-destructive"
             >
-              <LogOut />
+              {" "}
+              <Icons.logout />
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

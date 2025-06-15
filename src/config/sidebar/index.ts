@@ -1,14 +1,4 @@
-import {
-  BarChart3,
-  Settings,
-  UserCheck,
-  CheckSquare,
-  Calendar,
-  MessageSquare,
-  User,
-  Users,
-  Kanban,
-} from "lucide-react";
+import { Icons } from "@/components/icons";
 import type { SidebarData, SidebarConfig } from "@/types/sidebar";
 
 export type DashboardRole = "admin" | "leader" | "member";
@@ -32,23 +22,23 @@ export const sidebarConfigurations: Record<
         {
           title: "Main Dashboard",
           url: "/dashboard/admin/main",
-          icon: BarChart3,
+          icon: Icons.dashboard,
           isActive: true,
         },
         {
           title: "Kanban Board",
           url: "/dashboard/admin/kanban",
-          icon: Kanban,
+          icon: Icons.kanban,
         },
         {
           title: "Squad Management",
           url: "/dashboard/admin/squad",
-          icon: Users,
+          icon: Icons.users,
         },
         {
           title: "User Management",
           url: "/dashboard/admin/user",
-          icon: UserCheck,
+          icon: Icons.userCheck,
         },
       ],
     },
@@ -68,13 +58,13 @@ export const sidebarConfigurations: Record<
         {
           title: "Dashboard",
           url: "/dashboard/leader/main",
-          icon: BarChart3,
+          icon: Icons.dashboard,
           isActive: true,
         },
         {
           title: "Team Management",
           url: "/dashboard/leader/team",
-          icon: Users,
+          icon: Icons.users,
           items: [
             {
               title: "Team Overview",
@@ -93,17 +83,17 @@ export const sidebarConfigurations: Record<
         {
           title: "Schedule",
           url: "/dashboard/leader/schedule",
-          icon: Calendar,
+          icon: Icons.calendar,
         },
         {
           title: "Communication",
           url: "/dashboard/leader/communication",
-          icon: MessageSquare,
+          icon: Icons.messageSquare,
         },
         {
           title: "Settings",
           url: "/dashboard/leader/settings",
-          icon: Settings,
+          icon: Icons.settings,
         },
       ],
     },
@@ -123,13 +113,13 @@ export const sidebarConfigurations: Record<
         {
           title: "My Dashboard",
           url: "/dashboard/member/main",
-          icon: BarChart3,
+          icon: Icons.dashboard,
           isActive: true,
         },
         {
           title: "My Tasks",
           url: "/dashboard/member/tasks",
-          icon: CheckSquare,
+          icon: Icons.checkSquare,
           items: [
             {
               title: "Active Tasks",
@@ -148,22 +138,22 @@ export const sidebarConfigurations: Record<
         {
           title: "Schedule",
           url: "/dashboard/member/schedule",
-          icon: Calendar,
+          icon: Icons.calendar,
         },
         {
           title: "Messages",
           url: "/dashboard/member/messages",
-          icon: MessageSquare,
+          icon: Icons.messageSquare,
         },
         {
           title: "Profile",
           url: "/dashboard/member/profile",
-          icon: User,
+          icon: Icons.user,
         },
         {
           title: "Settings",
           url: "/dashboard/member/settings",
-          icon: Settings,
+          icon: Icons.settings,
         },
       ],
     },
