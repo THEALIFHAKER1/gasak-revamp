@@ -23,7 +23,6 @@ export const sidebarConfigurations: Record<
           title: "Main Dashboard",
           url: "/dashboard/admin/main",
           icon: Icons.dashboard,
-          isActive: true,
         },
         {
           title: "Kanban Board",
@@ -59,7 +58,6 @@ export const sidebarConfigurations: Record<
           title: "Dashboard",
           url: "/dashboard/leader/main",
           icon: Icons.dashboard,
-          isActive: true,
         },
         {
           title: "Team Management",
@@ -114,7 +112,6 @@ export const sidebarConfigurations: Record<
           title: "My Dashboard",
           url: "/dashboard/member/main",
           icon: Icons.dashboard,
-          isActive: true,
         },
         {
           title: "My Tasks",

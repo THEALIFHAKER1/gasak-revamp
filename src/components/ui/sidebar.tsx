@@ -4,8 +4,8 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Icons, type Icon } from "@/components/icons";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSessionStorage } from "@/hooks/use-session-storage";
@@ -284,7 +284,6 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      {" "}
       <Icons.panelLeft />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
@@ -417,7 +416,7 @@ function SidebarGroupLabel({
       data-slot="sidebar-group-label"
       data-sidebar="group-label"
       className={cn(
-        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center truncate overflow-hidden rounded-md px-2 text-xs font-medium whitespace-nowrap outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
         className,
       )}
@@ -486,7 +485,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[active=true]:border-l-2 data-[active=true]:border-sidebar-primary data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span]:truncate [&>span]:whitespace-nowrap [&>span]:overflow-hidden [&>svg]:size-4 [&>svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -698,8 +697,8 @@ function SidebarMenuSubButton({
       data-size={size}
       data-active={isActive}
       className={cn(
-        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 outline-hidden focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
-        "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 outline-hidden focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span]:truncate [&>span]:overflow-hidden [&>span]:whitespace-nowrap [&>svg]:size-4 [&>svg]:shrink-0",
+        "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground data-[active=true]:border-sidebar-primary data-[active=true]:border-l-2 data-[active=true]:font-medium",
         size === "sm" && "text-xs",
         size === "md" && "text-sm",
         "group-data-[collapsible=icon]:hidden",
@@ -716,37 +715,42 @@ function SidebarBrand({
   subtitle,
   className,
   ...props
-}: React.ComponentProps<"div"> & {
+}: React.ComponentProps<"button"> & {
   logo?: React.ComponentType<{ className?: string }>;
   title?: string;
   subtitle?: string;
 }) {
-  const { state } = useSidebar();
-  const isCollapsed = state === "collapsed";
-
   return (
-    <div
+    <SidebarMenuButton
+      size="lg"
       data-slot="sidebar-brand"
       data-sidebar="brand"
-      className={className}
+      className={cn(
+        "bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 border shadow-xs",
+        className,
+      )}
       {...props}
     >
       {logo && (
-        <div className="bg-primary text-primary-foreground ml-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg">
+        <div className="bg-primary text-primary-foreground flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg">
           {React.createElement(logo, { className: "h-5 w-5" })}
         </div>
       )}
-      {!isCollapsed && (title ?? subtitle) && (
-        <div className="flex min-w-0 flex-col">
+      {(title ?? subtitle) && (
+        <div className="grid flex-1 overflow-hidden text-left text-sm leading-tight">
           {title && (
-            <span className="text-lg font-bold tracking-wide">{title}</span>
+            <span className="truncate overflow-hidden text-lg font-bold tracking-wide whitespace-nowrap">
+              {title}
+            </span>
           )}
           {subtitle && (
-            <span className="text-muted-foreground text-xs">{subtitle}</span>
+            <span className="text-muted-foreground truncate overflow-hidden text-xs whitespace-nowrap">
+              {subtitle}
+            </span>
           )}
         </div>
       )}
-    </div>
+    </SidebarMenuButton>
   );
 }
 
@@ -764,76 +768,144 @@ function NavMain({
     }[];
   }[];
 }) {
-  const router = useRouter();
-  const { state } = useSidebar();
+  const pathname = usePathname();
+  const { isMobile, setOpenMobile, state, setOpen } = useSidebar();
+  // Function to check if a route is active
+  const isRouteActive = (url: string) => {
+    // Exact match
+    if (pathname === url) return true;
 
-  const handleItemClick = (
+    // For parent routes, check if current path starts with the URL followed by a slash
+    // This prevents false positives like '/dashboard/admin' matching '/dashboard/admin-settings'
+    if (pathname.startsWith(url + "/")) return true;
+
+    return false;
+  };
+
+  // Function to check if a parent item should be active (when any of its children are active)
+  const isParentActive = (item: (typeof items)[0]) => {
+    if (item.isActive) return true;
+    if (isRouteActive(item.url)) return true;
+
+    // Check if any child is active
+    if (item.items) {
+      return item.items.some((subItem) => isRouteActive(subItem.url));
+    }
+
+    return false;
+  };
+  const [openCollapsibles, setOpenCollapsibles] = React.useState<Set<string>>(
+    new Set(
+      items
+        .filter((item) => isParentActive(item) && item.items)
+        .map((item) => item.title),
+    ),
+  );
+
+  // Close all dropdowns when sidebar collapses
+  React.useEffect(() => {
+    if (state === "collapsed") {
+      setOpenCollapsibles(new Set());
+    }
+  }, [state]);
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
+
+  const handleParentClick = (
     item: (typeof items)[0],
     event: React.MouseEvent,
   ) => {
-    // If sidebar is collapsed and item has dropdown, navigate to main URL instead of expanding
+    // If sidebar is collapsed and item has children, expand sidebar and dropdown
     if (state === "collapsed" && item.items && item.items.length > 0) {
       event.preventDefault();
-      router.push(item.url);
+      setOpen(true);
+      // The collapsible will handle opening the dropdown
+      return;
     }
-    // Otherwise, let the normal collapsible behavior handle it
+    // Otherwise, let normal collapsible behavior handle it
+  };
+
+  const handleCollapsibleChange = (itemTitle: string, isOpen: boolean) => {
+    setOpenCollapsibles((prev) => {
+      const newSet = new Set(prev);
+      if (isOpen) {
+        newSet.add(itemTitle);
+      } else {
+        newSet.delete(itemTitle);
+      }
+      return newSet;
+    });
   };
 
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item) => {
-          // Items without dropdown - render as simple link
-          if (!item.items || item.items.length === 0) {
-            return (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild tooltip={item.title}>
-                  <Link href={item.url}>
-                    {item.icon && <item.icon />}
-                    <span>{item.title}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            );
-          }
-
-          // Items with dropdown - render as collapsible
-          return (
-            <Collapsible
-              key={item.title}
-              asChild
-              defaultOpen={item.isActive}
-              className="group/collapsible"
-            >
-              <SidebarMenuItem>
+        {" "}
+        {items.map((item) => (
+          <SidebarMenuItem key={item.title}>
+            {item.items ? (
+              <Collapsible
+                open={openCollapsibles.has(item.title)}
+                onOpenChange={(isOpen) =>
+                  handleCollapsibleChange(item.title, isOpen)
+                }
+                className="group/collapsible"
+              >
+                {" "}
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
                     tooltip={item.title}
-                    onClick={(event) => handleItemClick(item, event)}
+                    isActive={isParentActive(item)}
+                    onClick={(event) => handleParentClick(item, event)}
                   >
                     {item.icon && <item.icon />}
-                    <span>{item.title}</span>
-                    <Icons.chevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    <span className="truncate overflow-hidden whitespace-nowrap">
+                      {item.title}
+                    </span>
+                    <Icons.chevronRight className="ml-auto shrink-0 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
+                  {" "}
                   <SidebarMenuSub>
                     {item.items?.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
-                        <SidebarMenuSubButton asChild>
-                          <Link href={subItem.url}>
-                            <span>{subItem.title}</span>
+                        <SidebarMenuSubButton
+                          asChild
+                          isActive={isRouteActive(subItem.url)}
+                        >
+                          <Link href={subItem.url} onClick={handleLinkClick}>
+                            <span className="truncate overflow-hidden whitespace-nowrap">
+                              {subItem.title}
+                            </span>
                           </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
                   </SidebarMenuSub>
                 </CollapsibleContent>
-              </SidebarMenuItem>
-            </Collapsible>
-          );
-        })}
+              </Collapsible>
+            ) : (
+              <SidebarMenuButton
+                tooltip={item.title}
+                isActive={isParentActive(item)}
+                asChild
+              >
+                <Link href={item.url} onClick={handleLinkClick}>
+                  {item.icon && <item.icon />}
+                  <span className="truncate overflow-hidden whitespace-nowrap">
+                    {item.title}
+                  </span>
+                </Link>
+              </SidebarMenuButton>
+            )}
+          </SidebarMenuItem>
+        ))}
       </SidebarMenu>
     </SidebarGroup>
   );
@@ -848,7 +920,15 @@ function NavUser({
     avatar: string;
   };
 }) {
-  const { isMobile } = useSidebar();
+  const { isMobile, state } = useSidebar();
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  // Close dropdown when sidebar collapses
+  React.useEffect(() => {
+    if (state === "collapsed") {
+      setIsDropdownOpen(false);
+    }
+  }, [state]);
 
   const handleLogout = () => {
     // Add logout logic here
@@ -862,7 +942,8 @@ function NavUser({
   return (
     <SidebarMenu className="pb-2">
       <SidebarMenuItem>
-        <DropdownMenu>
+        {" "}
+        <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
@@ -871,10 +952,14 @@ function NavUser({
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+              </Avatar>{" "}
+              <div className="grid flex-1 overflow-hidden text-left text-sm leading-tight">
+                <span className="truncate overflow-hidden font-medium whitespace-nowrap">
+                  {user.name}
+                </span>
+                <span className="truncate overflow-hidden text-xs whitespace-nowrap">
+                  {user.email}
+                </span>
               </div>
               <Icons.chevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -885,7 +970,6 @@ function NavUser({
             align="end"
             sideOffset={4}
           >
-            {" "}
             <DropdownMenuItem onClick={handleSettings}>
               <Icons.settings />
               Settings
@@ -895,7 +979,6 @@ function NavUser({
               onClick={handleLogout}
               className="text-destructive bg-destructive/10 hover:bg-destructive/20 focus:bg-destructive/20 focus:text-destructive"
             >
-              {" "}
               <Icons.logout />
               Log out
             </DropdownMenuItem>
