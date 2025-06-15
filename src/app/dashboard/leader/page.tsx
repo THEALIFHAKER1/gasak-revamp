@@ -1,4 +1,4 @@
-import LeaderDashboardMainPage from "@/app/(Dashboard)/leader/main/page";
+import LeaderDashboardMainPage from "@/app/dashboard/leader/main/page";
 
 export default function LeaderDashboardPage() {
     return (<>

@@ -24,12 +24,15 @@
       "@styles/*": ["./src/styles/*"],
       "@components/*": ["./src/components/*"],
       "@providers/*": ["./src/components/providers/*"],
+      "@layouts/*": ["./src/components/layouts/*"],
       // admin dashboard
       "@adminDashboard/*": ["./src/app/dashboard/admin/*"],
       // leader dashboard
       "@leaderDashboard/*": ["./src/app/dashboard/leader/*"],
       // member dashboard
       "@memberDashboard/*": ["./src/app/dashboard/member/*"],
+      // public pages
+      "@public/*": ["./src/app/(public)/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

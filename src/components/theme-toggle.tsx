@@ -4,9 +4,20 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 import { motion as m } from "motion/react";
 import { Button } from "@ui/button";
+import { useMounted } from "@/hooks/use-mounted";
 
 export default function ThemeToggle() {
   const { setTheme, theme } = useTheme();
+  const mounted = useMounted();
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <Button variant="outline">
+        <div className="w-6 h-6 animate-pulse bg-muted rounded" />
+      </Button>
+    );
+  }
 
   const raysVariants = {
     hidden: {
@@ -73,6 +84,7 @@ export default function ThemeToggle() {
   return (
     <Button
       variant="outline"
+      size={"icon"}
       onClick={() => (theme === "dark" ? setTheme("light") : setTheme("dark"))}
     >
       <m.svg

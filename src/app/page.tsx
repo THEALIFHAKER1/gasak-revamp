@@ -1,9 +1,9 @@
-import ThemeToggle from "@components/theme-toggle";
+import HomePage from "@public/page";
 
 export default function Home() {
   return (
-    <div>
-      <ThemeToggle />
-    </div>
+    <>
+      <HomePage />
+    </>
   );
 }

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import "@styles/shadcn.css";
+import "@styles/tailwind.css";
 import { ThemeProvider } from "@providers/theme-provider";
-
-
+import SplashWrapper from "@/components/layouts/splash/splash-wrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,17 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-     <>
+    <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body>
+        <body className="">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <SplashWrapper>{children}</SplashWrapper>
           </ThemeProvider>
         </body>
       </html>
