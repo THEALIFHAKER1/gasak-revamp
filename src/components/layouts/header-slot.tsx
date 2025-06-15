@@ -34,7 +34,7 @@ interface HeaderTitleProps {
 export function HeaderTitle({ children }: HeaderTitleProps) {
   return (
     <HeaderSlot>
-      <h1 className="text-lg font-semibold text-dashboard-surface-foreground">
+      <h1 className="text-dashboard-surface-foreground text-lg font-semibold">
         {children}
       </h1>
     </HeaderSlot>
@@ -55,7 +55,7 @@ export function HeaderBreadcrumbs({ items }: HeaderBreadcrumbsProps) {
         <BreadcrumbList>
           {items.map((item, index) => (
             <React.Fragment key={index}>
-              <BreadcrumbItem className="hidden tablet:block">
+              <BreadcrumbItem className="tablet:block hidden">
                 {item.href ? (
                   <BreadcrumbLink
                     href={item.href}
@@ -70,7 +70,7 @@ export function HeaderBreadcrumbs({ items }: HeaderBreadcrumbsProps) {
                 )}
               </BreadcrumbItem>
               {index < items.length - 1 && (
-                <BreadcrumbSeparator className="hidden tablet:block text-dashboard-surface-foreground" />
+                <BreadcrumbSeparator className="tablet:block text-dashboard-surface-foreground hidden" />
               )}
             </React.Fragment>
           ))}

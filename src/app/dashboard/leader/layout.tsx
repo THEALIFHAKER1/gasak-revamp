@@ -12,7 +12,7 @@ export default function LeaderDashboardLayout({
 }: LeaderDashboardLayoutProps) {
   return (
     <DashboardLayoutProvider>
-      <section className="min-h-dvh max-h-dvh bg-dashboard-surface overflow-hidden">
+      <section className="bg-dashboard-surface max-h-dvh min-h-dvh overflow-hidden">
         <SidebarProvider>
           <DashboardSidebar role="leader" />
           <SidebarInset>

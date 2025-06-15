@@ -14,7 +14,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <Button variant="outline">
-        <div className="w-6 h-6 animate-pulse bg-muted rounded" />
+        <div className="bg-muted h-6 w-6 animate-pulse rounded" />
       </Button>
     );
   }

@@ -21,7 +21,7 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ title, breadcrumbs }: DashboardHeaderProps) {
   return (
-    <header className="flex h-[50px] shrink-0 items-center gap-2 bg-dashboard-surface transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+    <header className="bg-dashboard-surface flex h-[50px] shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
       <div className="flex items-center gap-2 px-4">
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mr-2 h-4" />{" "}
@@ -30,7 +30,7 @@ export function DashboardHeader({ title, breadcrumbs }: DashboardHeaderProps) {
             <BreadcrumbList>
               {breadcrumbs.map((crumb, index) => (
                 <React.Fragment key={index}>
-                  <BreadcrumbItem className="hidden tablet:block">
+                  <BreadcrumbItem className="tablet:block hidden">
                     {crumb.href ? (
                       <BreadcrumbLink
                         href={crumb.href}
@@ -45,7 +45,7 @@ export function DashboardHeader({ title, breadcrumbs }: DashboardHeaderProps) {
                     )}
                   </BreadcrumbItem>
                   {index < breadcrumbs.length - 1 && (
-                    <BreadcrumbSeparator className="hidden tablet:block text-dashboard-surface-foreground" />
+                    <BreadcrumbSeparator className="tablet:block text-dashboard-surface-foreground hidden" />
                   )}
                 </React.Fragment>
               ))}
@@ -53,7 +53,7 @@ export function DashboardHeader({ title, breadcrumbs }: DashboardHeaderProps) {
           </Breadcrumb>
         ) : (
           title && (
-            <h1 className="text-lg font-semibold text-dashboard-surface-foreground">
+            <h1 className="text-dashboard-surface-foreground text-lg font-semibold">
               {title}
             </h1>
           )

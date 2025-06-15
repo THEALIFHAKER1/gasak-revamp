@@ -7,9 +7,9 @@ export default function Loader() {
     <div className="bg-background grid h-dvh w-dvw place-items-center">
       <div className="w-80 max-w-[80vw]">
         {/* Just the loading bar */}
-        <div className="h-1 bg-muted rounded-full overflow-hidden">
+        <div className="bg-muted h-1 overflow-hidden rounded-full">
           <motion.div
-            className="h-full bg-primary rounded-full"
+            className="bg-primary h-full rounded-full"
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{

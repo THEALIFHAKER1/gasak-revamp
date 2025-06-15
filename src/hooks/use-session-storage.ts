@@ -6,7 +6,7 @@ type SetValue<T> = T | ((val: T) => T);
 
 export function useSessionStorage<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): [T, (value: SetValue<T>) => void] {
   // Get from session storage then parse stored json or return initialValue
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -15,7 +15,7 @@ export function useSessionStorage<T>(
     }
     try {
       const item = window.sessionStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      return item ? (JSON.parse(item) as T) : initialValue;
     } catch (error) {
       console.warn(`Error reading sessionStorage key "${key}":`, error);
       return initialValue;
@@ -26,7 +26,8 @@ export function useSessionStorage<T>(
   const setValue = (value: SetValue<T>) => {
     try {
       // Allow value to be a function so we have the same API as useState
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
       // Save state
       setStoredValue(valueToStore);
       // Save to session storage
