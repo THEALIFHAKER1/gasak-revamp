@@ -1,13 +1,18 @@
-import { HeaderTitle } from "@/components/layouts/header-slot";
+import { HeaderBreadcrumbs } from "@/components/layouts/dashboard/dashboard-header";
 
 export default function AdminDashboardKanbanPage() {
   return (
     <>
-      <HeaderTitle>Kanban Board</HeaderTitle>
+      <HeaderBreadcrumbs
+        items={[
+          { label: "Dashboard", href: "/dashboard/admin" },
+          { label: "Kanban Board" },
+        ]}
+      />
 
       <div>
         <h1>Admin Dashboard - Kanban</h1>
-        <p>This page uses a simple title in the header</p>
+        <p>This page now shows breadcrumbs on desktop and title on mobile</p>
       </div>
     </>
   );

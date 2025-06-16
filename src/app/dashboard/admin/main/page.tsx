@@ -1,4 +1,4 @@
-import { HeaderBreadcrumbs } from "@/components/layouts/header-slot";
+import { HeaderBreadcrumbs } from "@/components/layouts/dashboard/dashboard-header";
 
 export default function AdminDashboardMainPage() {
   return (
