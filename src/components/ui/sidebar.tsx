@@ -775,7 +775,21 @@ function NavMain({
     // Exact match
     if (pathname === url) return true;
 
-    // For parent routes, check if current path starts with the URL followed by a slash
+    // Check if this URL is a dashboard root route by looking at the sidebar items
+    // Dashboard root routes are those that match the pattern /dashboard/[role] and are in the main nav
+    const isDashboardRoot = items.some(
+      (item) =>
+        item.url === url &&
+        /^\/dashboard\/[^\/]+$/.test(url) &&
+        item.title.toLowerCase().includes("dashboard"),
+    );
+
+    // If it's a dashboard root route, only match exactly
+    if (isDashboardRoot) {
+      return pathname === url;
+    }
+
+    // For other parent routes, check if current path starts with the URL followed by a slash
     // This prevents false positives like '/dashboard/admin' matching '/dashboard/admin-settings'
     if (pathname.startsWith(url + "/")) return true;
 
@@ -845,7 +859,6 @@ function NavMain({
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
-        {" "}
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>
             {item.items ? (
@@ -856,7 +869,6 @@ function NavMain({
                 }
                 className="group/collapsible"
               >
-                {" "}
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
                     tooltip={item.title}
@@ -871,7 +883,6 @@ function NavMain({
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  {" "}
                   <SidebarMenuSub>
                     {item.items?.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
@@ -942,7 +953,6 @@ function NavUser({
   return (
     <SidebarMenu className="pb-2">
       <SidebarMenuItem>
-        {" "}
         <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
@@ -952,7 +962,7 @@ function NavUser({
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>{" "}
+              </Avatar>
               <div className="grid flex-1 overflow-hidden text-left text-sm leading-tight">
                 <span className="truncate overflow-hidden font-medium whitespace-nowrap">
                   {user.name}

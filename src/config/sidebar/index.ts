@@ -21,7 +21,7 @@ export const sidebarConfigurations: Record<
       navMain: [
         {
           title: "Main Dashboard",
-          url: "/dashboard/admin/main",
+          url: "/dashboard/admin",
           icon: Icons.dashboard,
         },
         {
@@ -56,7 +56,7 @@ export const sidebarConfigurations: Record<
       navMain: [
         {
           title: "Dashboard",
-          url: "/dashboard/leader/main",
+          url: "/dashboard/leader",
           icon: Icons.dashboard,
         },
         {
@@ -110,7 +110,7 @@ export const sidebarConfigurations: Record<
       navMain: [
         {
           title: "My Dashboard",
-          url: "/dashboard/member/main",
+          url: "/dashboard/member",
           icon: Icons.dashboard,
         },
         {
