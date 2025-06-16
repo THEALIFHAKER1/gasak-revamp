@@ -22,6 +22,11 @@ import {
   IconCheck,
   IconCircle,
   IconX,
+
+  // Stats and Analytics Icons
+  IconCrown,
+  IconTrendingUp,
+  IconTrendingDown,
 } from "@tabler/icons-react";
 import type { IconProps } from "@tabler/icons-react";
 
@@ -51,4 +56,9 @@ export const Icons = {
   check: IconCheck,
   circle: IconCircle,
   close: IconX,
+
+  // Stats and Analytics
+  crown: IconCrown,
+  trendingUp: IconTrendingUp,
+  trendingDown: IconTrendingDown,
 };
