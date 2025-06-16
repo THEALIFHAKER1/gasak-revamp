@@ -1,10 +1,7 @@
 "use client";
 
 import React from "react";
-import { Separator } from "@/components/ui/separator";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import ThemeToggle from "@/components/theme-toggle";
-import { useDashboardLayout } from "@/contexts/dashboard-layout-context";
+import { DashboardHeader } from "./dashboard-header";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface DashboardContainerProps {
@@ -16,25 +13,14 @@ export function DashboardContainer({
   children,
   scrollable = true,
 }: DashboardContainerProps) {
-  const { headerSlot } = useDashboardLayout();
-
   return (
     <>
       {/* Header */}
-      <header className="bg-dashboard-surface flex h-[50px] shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-        <div className="flex items-center gap-2 px-4">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          {headerSlot}
-        </div>
-        <div className="ml-auto flex items-center gap-2 px-4">
-          <ThemeToggle />
-        </div>
-      </header>
+      <DashboardHeader />
 
       {/* Content */}
       {scrollable ? (
-        <div className="bg-dashboard-surface h-[calc(100%-50px)] px-2 pb-2">
+        <div className="bg-dashboard-surface h-[calc(100dvh-50px)] px-2 pb-2">
           <div className="border-dashboard-border bg-background h-full overflow-hidden rounded-lg border">
             <ScrollArea className="h-full">
               <div className="p-4">{children}</div>
@@ -42,7 +28,7 @@ export function DashboardContainer({
           </div>
         </div>
       ) : (
-        <div className="bg-dashboard-surface h-[calc(100%-50px)] px-2 pb-2">
+        <div className="bg-dashboard-surface h-[calc(100dvh-50px)] px-2 pb-2">
           <div className="border-dashboard-border bg-background h-full overflow-hidden rounded-lg border">
             <div className="p-4">{children}</div>
           </div>

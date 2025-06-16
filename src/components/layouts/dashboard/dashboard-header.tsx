@@ -2,6 +2,9 @@
 
 import React, { useEffect } from "react";
 import { useDashboardLayout } from "@/contexts/dashboard-layout-context";
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import ThemeToggle from "@/components/theme-toggle";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -87,5 +90,22 @@ export function HeaderBreadcrumbs({ items }: HeaderBreadcrumbsProps) {
         </BreadcrumbList>
       </Breadcrumb>
     </HeaderSlot>
+  );
+}
+
+export function DashboardHeader() {
+  const { headerSlot } = useDashboardLayout();
+
+  return (
+    <header className="bg-dashboard-surface flex h-[50px] shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+      <div className="flex items-center gap-2 px-4">
+        <SidebarTrigger className="-ml-1" />
+        <Separator orientation="vertical" className="mr-2 h-4" />
+        {headerSlot}
+      </div>
+      <div className="ml-auto flex items-center gap-2 px-4">
+        <ThemeToggle />
+      </div>
+    </header>
   );
 }
