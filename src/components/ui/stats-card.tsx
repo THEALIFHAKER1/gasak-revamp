@@ -35,7 +35,7 @@ export function StatsCard({
       <div className="tablet:block tablet:h-auto grid h-16 grid-cols-5 grid-rows-2">
         {/* Mobile: Large icon - left side (1 column, 2 rows) */}
         {icon && (
-          <div className="tablet:hidden text-muted-foreground bg-muted/30 row-span-2 flex items-center justify-center rounded-l-lg">
+          <div className="tablet:hidden from-primary/10 to-primary/5 text-primary row-span-2 flex items-center justify-center rounded-l-lg bg-gradient-to-br">
             <div className="text-2xl">{icon}</div>
           </div>
         )}
@@ -65,16 +65,16 @@ export function StatsCard({
             {trend && (
               <Badge
                 variant="outline"
-                className={`px-1.5 py-0.5 text-xs transition-all duration-200 ${
+                className={`px-1 py-0.5 text-xs transition-all duration-200 ${
                   trend.isPositive
                     ? "border-green-200 bg-green-50 text-green-700 hover:bg-green-100"
                     : "border-red-200 bg-red-50 text-red-700 hover:bg-red-100"
                 } `}
               >
                 {trend.isPositive ? (
-                  <IconTrendingUp className="mr-0.5 h-2.5 w-2.5" />
+                  <IconTrendingUp className="mr-0.5 h-2 w-2" />
                 ) : (
-                  <IconTrendingDown className="mr-0.5 h-2.5 w-2.5" />
+                  <IconTrendingDown className="mr-0.5 h-2 w-2" />
                 )}
                 <span className="text-xs font-medium">{trend.value}</span>
               </Badge>
@@ -105,18 +105,18 @@ export function StatsCard({
             {trend && (
               <Badge
                 variant="outline"
-                className={`px-3 py-1.5 text-sm transition-all duration-200 ${
+                className={`px-2 py-1 text-xs transition-all duration-200 ${
                   trend.isPositive
                     ? "border-green-200 bg-green-50 text-green-700 hover:bg-green-100"
                     : "border-red-200 bg-red-50 text-red-700 hover:bg-red-100"
                 } `}
               >
                 {trend.isPositive ? (
-                  <IconTrendingUp className="mr-1.5 h-4 w-4" />
+                  <IconTrendingUp className="mr-1 h-3 w-3" />
                 ) : (
-                  <IconTrendingDown className="mr-1.5 h-4 w-4" />
+                  <IconTrendingDown className="mr-1 h-3 w-3" />
                 )}
-                <span className="font-semibold">{trend.value}</span>
+                <span className="text-xs font-medium">{trend.value}</span>
               </Badge>
             )}
           </div>

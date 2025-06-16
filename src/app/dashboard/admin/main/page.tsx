@@ -67,6 +67,8 @@ export default function AdminDashboardMainPage() {
           ]}
         />
       </CollapseSection>
+
+      <div>hello</div>
     </>
   );
 }

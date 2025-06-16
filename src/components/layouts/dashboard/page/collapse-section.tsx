@@ -31,7 +31,9 @@ export function CollapseSection({
           <AccordionTrigger className="px-0 py-3 text-lg font-semibold hover:no-underline">
             {title}
           </AccordionTrigger>
-          <AccordionContent className="px-0 pb-4">{children}</AccordionContent>
+          <AccordionContent className="rounded-lg border p-1">
+            {children}
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
