@@ -11,6 +11,7 @@ interface CollapseSectionProps {
   children: React.ReactNode;
   defaultOpen?: boolean;
   className?: string;
+  actions?: React.ReactNode;
 }
 
 export function CollapseSection({
@@ -18,9 +19,18 @@ export function CollapseSection({
   children,
   defaultOpen = true,
   className,
+  actions,
 }: CollapseSectionProps) {
   return (
     <div className={className}>
+      {actions && (
+        <div className="mb-2 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-lg font-semibold">
+            {title}
+          </div>
+          <div className="flex items-center gap-2">{actions}</div>
+        </div>
+      )}
       <Accordion
         type="single"
         collapsible
@@ -28,8 +38,10 @@ export function CollapseSection({
         className="w-full"
       >
         <AccordionItem value="item-1" className="border-none">
-          <AccordionTrigger className="px-0 py-3 text-lg font-semibold hover:no-underline">
-            {title}
+          <AccordionTrigger
+            className={`px-0 py-3 text-lg font-semibold hover:no-underline ${actions ? "hidden" : ""}`}
+          >
+            {!actions && title}
           </AccordionTrigger>
           <AccordionContent className="rounded-lg border p-1">
             {children}
