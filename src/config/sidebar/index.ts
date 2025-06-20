@@ -39,6 +39,11 @@ export const sidebarConfigurations: Record<
           url: "/dashboard/admin/user",
           icon: Icons.userCheck,
         },
+        {
+          title: "Auth Comparison",
+          url: "/dashboard/admin/auth-comparison",
+          icon: Icons.checkSquare,
+        },
       ],
     },
     config: {
@@ -92,6 +97,11 @@ export const sidebarConfigurations: Record<
           title: "Settings",
           url: "/dashboard/leader/settings",
           icon: Icons.settings,
+        },
+        {
+          title: "Auth Comparison",
+          url: "/dashboard/leader/auth-comparison",
+          icon: Icons.checkSquare,
         },
       ],
     },
@@ -151,6 +161,11 @@ export const sidebarConfigurations: Record<
           title: "Settings",
           url: "/dashboard/member/settings",
           icon: Icons.settings,
+        },
+        {
+          title: "Auth Comparison",
+          url: "/dashboard/member/auth-comparison",
+          icon: Icons.checkSquare,
         },
       ],
     },

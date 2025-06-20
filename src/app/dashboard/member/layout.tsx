@@ -2,14 +2,18 @@ import { DashboardSidebar } from "@/components/layouts/dashboard/dashboard-sideb
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardLayoutProvider } from "@/contexts/dashboard-layout-context";
 import { DashboardContainer } from "@/components/layouts/dashboard/dashboard-container";
+import { requireMember } from "@/lib/auth";
 
 interface MemberDashboardLayoutProps {
   children: React.ReactNode;
 }
 
-export default function MemberDashboardLayout({
+export default async function MemberDashboardLayout({
   children,
 }: MemberDashboardLayoutProps) {
+  // Verify member role before rendering
+  await requireMember();
+
   return (
     <DashboardLayoutProvider>
       <section className="bg-dashboard-surface max-h-dvh min-h-dvh overflow-hidden">

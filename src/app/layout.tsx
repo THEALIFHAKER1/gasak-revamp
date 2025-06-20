@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@styles/tailwind.css";
 import { ThemeProvider } from "@providers/theme-provider";
+import NextAuthProvider from "@/components/providers/session-provider";
 import SplashWrapper from "@/components/layouts/splash/splash-wrapper";
 
 export const metadata: Metadata = {
@@ -18,14 +19,16 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <head />
         <body className="">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <SplashWrapper>{children}</SplashWrapper>
-          </ThemeProvider>
+          <NextAuthProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <SplashWrapper>{children}</SplashWrapper>
+            </ThemeProvider>
+          </NextAuthProvider>
         </body>
       </html>
     </>

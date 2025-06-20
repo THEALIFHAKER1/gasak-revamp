@@ -8,15 +8,16 @@ import {
 
 export const createTable = pgTableCreator((name) => `gasak_${name}`);
 
-export const roleEnum = pgEnum("role", ["admin", "leader", "member"]);
-export const statusEnum = pgEnum("status", ["TODO", "IN_PROGRESS", "DONE"]);
+export const userRoleEnum = pgEnum("role", ["admin", "leader", "member"]);
+
+export type UserRoleEnum = (typeof userRoleEnum.enumValues)[number];
 
 export const users = createTable("user", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name"),
   email: text("email").unique().notNull(),
   password: text("password").notNull(),
-  role: roleEnum("role").notNull().default("member"),
+  role: userRoleEnum("role").notNull().default("member"),
   ign: text("ign"), // In-game name
   image: text("image"), // User profile picture
 });

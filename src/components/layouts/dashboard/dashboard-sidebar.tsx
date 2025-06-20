@@ -3,8 +3,8 @@
 import { useSidebarConfig } from "@/hooks/use-sidebar-config";
 import type { DashboardRole } from "@/config/sidebar";
 import * as React from "react";
-import { Icons } from "@/components/icons";
 import { NavMain, NavUser } from "@/components/ui/sidebar";
+import Image from "next/image";
 import {
   Sidebar,
   SidebarBrand,
@@ -22,6 +22,17 @@ interface DashboardSidebarProps {
   customConfig?: Partial<SidebarConfig>;
 }
 
+// Custom logo component for GASAK
+const GasakLogo = ({ className }: { className?: string }) => (
+  <Image
+    src="/logo.png"
+    alt="GASAK Logo"
+    width={40}
+    height={40}
+    className={className}
+  />
+);
+
 export function DashboardSidebar({
   role,
   customData,
@@ -37,7 +48,7 @@ export function DashboardSidebar({
     <Sidebar collapsible={config.collapsible}>
       <SidebarHeader>
         <SidebarBrand
-          logo={Icons.building}
+          logo={GasakLogo}
           title="GASAK"
           subtitle="Dashboard Management"
         />

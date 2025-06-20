@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { getSidebarConfig, type DashboardRole } from "@/config/sidebar";
 import type { SidebarData, SidebarConfig } from "@/types/sidebar";
+import useAuth from "@/hooks/use-auth";
 
 interface UseSidebarConfigOptions {
   role: DashboardRole;
@@ -15,16 +16,32 @@ export function useSidebarConfig({
   customData,
   customConfig,
 }: UseSidebarConfigOptions) {
+  const { user: loggedUser, isAuthenticated } = useAuth();
+
   return useMemo(() => {
     const baseConfig = getSidebarConfig(role);
 
+    // Use logged user data if available, otherwise fallback to static data
+    const userData =
+      isAuthenticated && loggedUser
+        ? {
+            name: loggedUser.name ?? "Unknown User",
+            email: loggedUser.email ?? "unknown@gasak.com",
+            avatar: loggedUser.image ?? "/avatars/default.jpg",
+          }
+        : baseConfig.data.user;
+
+    const data = {
+      ...baseConfig.data,
+      user: userData,
+      ...customData,
+    };
+
     return {
-      data: customData
-        ? { ...baseConfig.data, ...customData }
-        : baseConfig.data,
+      data,
       config: customConfig
         ? { ...baseConfig.config, ...customConfig }
         : baseConfig.config,
     };
-  }, [role, customData, customConfig]);
+  }, [role, loggedUser, isAuthenticated, customData, customConfig]);
 }

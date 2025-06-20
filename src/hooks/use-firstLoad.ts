@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
  * @param key Unique storage key (e.g., 'splashscreen', 'tutorial', 'onboarding')
  * @param delay milliseconds to wait before marking first load complete
  */
-export default function useFirstLoad(key: string, delay = 2000) {
+export default function useFirstload(key: string, delay = 2000) {
   const storageKey = `firstload_${key}`;
   const [hasLoaded, setHasLoaded] = useSessionStorage<boolean>(
     storageKey,

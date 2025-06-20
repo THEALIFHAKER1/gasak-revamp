@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 
 import Loader from "./loader";
 import { useMounted } from "@/hooks/use-mounted";
-import useFirstLoad from "@/hooks/use-firstLoad";
+import useFirstload from "@/hooks/use-firstload";
 
 interface SplashWrapperProps {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ interface SplashWrapperProps {
 
 export default function SplashWrapper({ children }: SplashWrapperProps) {
   const mounted = useMounted();
-  const { isFirstLoadComplete } = useFirstLoad("splashscreen");
+  const { isFirstLoadComplete } = useFirstload("splashscreen");
 
   if (!mounted) {
     return null;

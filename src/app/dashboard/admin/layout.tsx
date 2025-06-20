@@ -2,14 +2,18 @@ import { DashboardSidebar } from "@/components/layouts/dashboard/dashboard-sideb
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardLayoutProvider } from "@/contexts/dashboard-layout-context";
 import { DashboardContainer } from "@/components/layouts/dashboard/dashboard-container";
+import { requireAdmin } from "@/lib/auth";
 
 interface AdminDashboardLayoutProps {
   children: React.ReactNode;
 }
 
-export default function AdminDashboardLayout({
+export default async function AdminDashboardLayout({
   children,
 }: AdminDashboardLayoutProps) {
+  // Verify admin role before rendering
+  await requireAdmin();
+
   return (
     <DashboardLayoutProvider>
       <section className="bg-dashboard-surface max-h-dvh min-h-dvh overflow-hidden">

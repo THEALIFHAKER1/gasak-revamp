@@ -40,6 +40,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { logout } from "@/actions/logout";
 
 const SIDEBAR_STORAGE_KEY = "sidebar_state";
 const SIDEBAR_WIDTH = "16rem";
@@ -732,8 +733,8 @@ function SidebarBrand({
       {...props}
     >
       {logo && (
-        <div className="bg-primary text-primary-foreground flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg">
-          {React.createElement(logo, { className: "h-5 w-5" })}
+        <div className="flex flex-shrink-0 items-center justify-center">
+          {React.createElement(logo, { className: "h-10 w-10" })}
         </div>
       )}
       {(title ?? subtitle) && (
@@ -941,9 +942,12 @@ function NavUser({
     }
   }, [state]);
 
-  const handleLogout = () => {
-    // Add logout logic here
-    console.log("Logging out...");
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   const handleSettings = () => {
