@@ -2,7 +2,7 @@ import { DashboardSidebar } from "@/components/layouts/dashboard/dashboard-sideb
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardLayoutProvider } from "@/contexts/dashboard-layout-context";
 import { DashboardContainer } from "@/components/layouts/dashboard/dashboard-container";
-import { requireMember } from "@/lib/auth";
+import { requireRole } from "@/lib/auth";
 
 interface MemberDashboardLayoutProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export default async function MemberDashboardLayout({
   children,
 }: MemberDashboardLayoutProps) {
   // Verify member role before rendering
-  await requireMember();
+  await requireRole("member");
 
   return (
     <DashboardLayoutProvider>

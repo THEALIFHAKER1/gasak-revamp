@@ -2,7 +2,7 @@ import { DashboardSidebar } from "@/components/layouts/dashboard/dashboard-sideb
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardLayoutProvider } from "@/contexts/dashboard-layout-context";
 import { DashboardContainer } from "@/components/layouts/dashboard/dashboard-container";
-import { requireLeader } from "@/lib/auth";
+import { requireRole } from "@/lib/auth";
 
 interface LeaderDashboardLayoutProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export default async function LeaderDashboardLayout({
   children,
 }: LeaderDashboardLayoutProps) {
   // Verify leader role before rendering
-  await requireLeader();
+  await requireRole("leader");
 
   return (
     <DashboardLayoutProvider>

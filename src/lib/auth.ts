@@ -24,31 +24,6 @@ export async function requireRole(requiredRole: UserRoleEnum) {
   return user;
 }
 
-export async function requireAdmin() {
-  return requireRole("admin");
-}
-
-/**
- * Get all current user data in one call (server-side)
- * More efficient than calling individual functions multiple times
- */
-export async function getCurrentUserData() {
-  const session = await auth();
-  const user = session?.user;
-
-  return {
-    user,
-    session,
-    isAuthenticated: !!user,
-    role: user?.role,
-    id: user?.id,
-    name: user?.name,
-    email: user?.email,
-    ign: user?.ign,
-    image: user?.image,
-  };
-}
-
 // ========================================
 // UNUSED FUNCTIONS (commented out)
 // ========================================
@@ -61,14 +36,6 @@ export async function getCurrentUserData() {
 // export async function currentRole() {
 //   const session = await auth();
 //   return session?.user?.role;
-// }
-
-// export async function requireLeader() {
-//   return requireRole("leader");
-// }
-
-// export async function requireMember() {
-//   return requireRole("member");
 // }
 
 // /**
