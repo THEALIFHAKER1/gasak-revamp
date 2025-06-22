@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "@styles/tailwind.css";
+import "@styles/globals.css";
 import { ThemeProvider } from "@providers/theme-provider";
 import NextAuthProvider from "@/components/providers/session-provider";
 import SplashWrapper from "@/components/layouts/splash/splash-wrapper";

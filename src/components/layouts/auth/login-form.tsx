@@ -4,7 +4,7 @@ import React, { useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Login } from "@/actions/login";
-import { LoginSchema } from "@/schema";
+import { LoginSchema } from "@/schema/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type * as z from "zod";

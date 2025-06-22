@@ -10,14 +10,8 @@ export const sidebarConfigurations: Record<
     data: SidebarData;
     config: SidebarConfig;
   }
-> = {
-  admin: {
+> = {  admin: {
     data: {
-      user: {
-        name: "Admin User",
-        email: "admin@gasak.com",
-        avatar: "/avatars/admin.jpg",
-      },
       navMain: [
         {
           title: "Main Dashboard",
@@ -36,13 +30,7 @@ export const sidebarConfigurations: Record<
         },
         {
           title: "User Management",
-          url: "/dashboard/admin/user",
-          icon: Icons.userCheck,
-        },
-        {
-          title: "Auth Comparison",
-          url: "/dashboard/admin/auth-comparison",
-          icon: Icons.checkSquare,
+          url: "/dashboard/admin/user",          icon: Icons.userCheck,
         },
       ],
     },
@@ -50,14 +38,8 @@ export const sidebarConfigurations: Record<
       showUser: true,
       collapsible: "icon",
     },
-  },
-  leader: {
+  },  leader: {
     data: {
-      user: {
-        name: "Team Leader",
-        email: "leader@gasak.com",
-        avatar: "/avatars/leader.jpg",
-      },
       navMain: [
         {
           title: "Dashboard",
@@ -92,16 +74,10 @@ export const sidebarConfigurations: Record<
           title: "Communication",
           url: "/dashboard/leader/communication",
           icon: Icons.messageSquare,
-        },
-        {
+        },        {
           title: "Settings",
           url: "/dashboard/leader/settings",
           icon: Icons.settings,
-        },
-        {
-          title: "Auth Comparison",
-          url: "/dashboard/leader/auth-comparison",
-          icon: Icons.checkSquare,
         },
       ],
     },
@@ -109,14 +85,8 @@ export const sidebarConfigurations: Record<
       showUser: true,
       collapsible: "icon",
     },
-  },
-  member: {
+  },  member: {
     data: {
-      user: {
-        name: "Team Member",
-        email: "member@gasak.com",
-        avatar: "/avatars/member.jpg",
-      },
       navMain: [
         {
           title: "My Dashboard",
@@ -161,11 +131,6 @@ export const sidebarConfigurations: Record<
           title: "Settings",
           url: "/dashboard/member/settings",
           icon: Icons.settings,
-        },
-        {
-          title: "Auth Comparison",
-          url: "/dashboard/member/auth-comparison",
-          icon: Icons.checkSquare,
         },
       ],
     },

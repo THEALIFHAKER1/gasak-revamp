@@ -1,9 +1,9 @@
 import type { Icon } from "@/components/icons";
+import type { User } from "@/db/types";
 
-export interface SidebarUser {
-  name: string;
-  email: string;
-  avatar: string;
+export interface SidebarData {
+  user?: Pick<User, "name" | "email" | "image">;
+  navMain: SidebarNavItem[];
 }
 
 export interface SidebarNavItem {
@@ -15,11 +15,6 @@ export interface SidebarNavItem {
     title: string;
     url: string;
   }[];
-}
-
-export interface SidebarData {
-  user: SidebarUser;
-  navMain: SidebarNavItem[];
 }
 
 export interface SidebarConfig {

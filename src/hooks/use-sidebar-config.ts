@@ -19,17 +19,19 @@ export function useSidebarConfig({
   const { user: loggedUser, isAuthenticated } = useAuth();
 
   return useMemo(() => {
-    const baseConfig = getSidebarConfig(role);
-
-    // Use logged user data if available, otherwise fallback to static data
+    const baseConfig = getSidebarConfig(role);    // Use logged user data if available, otherwise fallback to static data
     const userData =
       isAuthenticated && loggedUser
         ? {
             name: loggedUser.name ?? "Unknown User",
             email: loggedUser.email ?? "unknown@gasak.com",
-            avatar: loggedUser.image ?? "/avatars/default.jpg",
+            image: loggedUser.image ?? "/avatars/default.jpg",
           }
-        : baseConfig.data.user;
+        : baseConfig.data.user ?? {
+            name: "Unknown User",
+            email: "unknown@gasak.com", 
+            image: "/avatars/default.jpg",
+          };
 
     const data = {
       ...baseConfig.data,

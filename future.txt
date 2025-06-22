@@ -1,0 +1,79 @@
+# Future Enhancements for Database Schema
+
+## Drizzle Relations - For Query Builder (When implementing fetching/querying features)
+
+Add these relations to enable efficient data fetching with joins:
+
+```typescript
+import { relations } from "drizzle-orm";
+
+// Drizzle Relations - enables query builder with joins
+export const usersRelations = relations(users, ({ many }) => ({
+  sessions: many(sessions),
+  squadMemberships: many(squadMembers),
+  leaderOfSquads: many(squads, {
+    relationName: "squad_leader",
+  }),
+}));
+
+export const sessionsRelations = relations(sessions, ({ one }) => ({
+  user: one(users, {
+    fields: [sessions.userId],
+    references: [users.id],
+  }),
+}));
+
+export const squadsRelations = relations(squads, ({ many, one }) => ({
+  members: many(squadMembers),
+  leader: one(users, {
+    fields: [squads.leaderId],
+    references: [users.id],
+    relationName: "squad_leader",
+  }),
+}));
+
+export const squadMembersRelations = relations(squadMembers, ({ one }) => ({
+  user: one(users, {
+    fields: [squadMembers.userId],
+    references: [users.id],
+  }),
+  squad: one(squads, {
+    fields: [squadMembers.squadId],
+    references: [squads.id],
+  }),
+}));
+```
+
+## Usage Examples (when relations are added):
+
+```typescript
+// Get user with all their squad info
+const userWithSquads = await db.query.users.findFirst({
+  where: eq(users.email, "user@example.com"),
+  with: {
+    squadMemberships: { with: { squad: true } },
+    sessions: true
+  }
+});
+
+// Get squad with members and leader
+const squadWithDetails = await db.query.squads.findFirst({
+  where: eq(squads.id, squadId),
+  with: {
+    members: { with: { user: true } },
+    leader: true
+  }
+});
+```
+
+## When to Add Relations:
+- When you start implementing data fetching features
+- When you need to join tables in queries
+- When you want to avoid N+1 query problems
+- When building API endpoints that return related data
+
+## Benefits:
+- Type-safe queries
+- Automatic JOIN generation
+- Prevents N+1 queries
+- Better developer experience

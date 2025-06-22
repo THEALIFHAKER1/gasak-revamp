@@ -2,7 +2,7 @@
 
 import { signIn } from "@/auth";
 import { getRoleBasedRedirect } from "@/routes";
-import { LoginSchema } from "@/schema";
+import { LoginSchema } from "@/schema/login";
 import { compare } from "bcrypt-ts";
 import { AuthError } from "next-auth";
 import type * as z from "zod";
