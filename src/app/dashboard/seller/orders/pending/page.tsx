@@ -58,7 +58,7 @@ export default function SellerPendingOrdersPage() {
                   </div>
                 </div>
 
-                <div className="mb-4 grid gap-2 md:grid-cols-3">
+                <div className="mb-4 grid gap-2 laptop:grid-cols-3">
                   <div>
                     <label className="text-muted-foreground text-xs font-medium">
                       Order Date

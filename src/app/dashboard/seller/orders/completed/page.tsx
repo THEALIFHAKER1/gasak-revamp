@@ -57,7 +57,7 @@ export default function SellerCompletedOrdersPage() {
                   </div>
                 </div>
 
-                <div className="mt-3 grid gap-2 md:grid-cols-4">
+                <div className="mt-3 grid gap-2 laptop:grid-cols-4">
                   <div>
                     <label className="text-muted-foreground text-xs font-medium">
                       Order Date

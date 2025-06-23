@@ -39,7 +39,7 @@ export default function SellerProductsPage() {
             Your active product listings will be displayed here in a table
             format with options to edit, delete, or manage inventory.
           </p>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 laptop:grid-cols-2 desktop:grid-cols-3">
             {/* Placeholder product cards */}
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-background rounded-lg border p-4">

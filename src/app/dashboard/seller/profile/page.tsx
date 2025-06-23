@@ -47,7 +47,7 @@ export default function SellerProfilePage() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 laptop:grid-cols-2">
             <div>
               <label className="text-muted-foreground text-sm font-medium">
                 Email
