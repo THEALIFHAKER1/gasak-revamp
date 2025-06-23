@@ -1,16 +1,19 @@
 import { Icons } from "@/components/icons";
 import type { SidebarData, SidebarConfig } from "@/types/sidebar";
+import type { UserRoleEnum } from "@/db/schema";
 
-export type DashboardRole = "admin" | "leader" | "member";
+export type DashboardRole = UserRoleEnum;
 
-// Unified sidebar configurations
-export const sidebarConfigurations: Record<
-  DashboardRole,
+type SidebarConfigMap = Record<
+  UserRoleEnum,
   {
     data: SidebarData;
     config: SidebarConfig;
   }
-> = {  admin: {
+>;
+
+export const sidebarConfigurations: SidebarConfigMap = {
+  admin: {
     data: {
       navMain: [
         {
@@ -30,7 +33,8 @@ export const sidebarConfigurations: Record<
         },
         {
           title: "User Management",
-          url: "/dashboard/admin/user",          icon: Icons.userCheck,
+          url: "/dashboard/admin/user",
+          icon: Icons.userCheck,
         },
       ],
     },
@@ -38,7 +42,8 @@ export const sidebarConfigurations: Record<
       showUser: true,
       collapsible: "icon",
     },
-  },  leader: {
+  },
+  leader: {
     data: {
       navMain: [
         {
@@ -74,7 +79,8 @@ export const sidebarConfigurations: Record<
           title: "Communication",
           url: "/dashboard/leader/communication",
           icon: Icons.messageSquare,
-        },        {
+        },
+        {
           title: "Settings",
           url: "/dashboard/leader/settings",
           icon: Icons.settings,
@@ -85,7 +91,8 @@ export const sidebarConfigurations: Record<
       showUser: true,
       collapsible: "icon",
     },
-  },  member: {
+  },
+  member: {
     data: {
       navMain: [
         {
@@ -139,14 +146,62 @@ export const sidebarConfigurations: Record<
       collapsible: "icon",
     },
   },
+  seller: {
+    data: {
+      navMain: [
+        {
+          title: "Sales Dashboard",
+          url: "/dashboard/seller",
+          icon: Icons.dashboard,
+        },
+        {
+          title: "My Products",
+          url: "/dashboard/seller/products",
+          icon: Icons.building,
+        },
+        {
+          title: "Orders",
+          url: "/dashboard/seller/orders",
+          icon: Icons.checkSquare,
+          items: [
+            {
+              title: "Pending Orders",
+              url: "/dashboard/seller/orders/pending",
+            },
+            {
+              title: "Completed",
+              url: "/dashboard/seller/orders/completed",
+            },
+            {
+              title: "Returns",
+              url: "/dashboard/seller/orders/returns",
+            },
+          ],
+        },
+        {
+          title: "Inventory",
+          url: "/dashboard/seller/inventory",
+          icon: Icons.users,
+        },
+        {
+          title: "Analytics",
+          url: "/dashboard/seller/analytics",
+          icon: Icons.trendingUp,
+        },
+        {
+          title: "Profile",
+          url: "/dashboard/seller/profile",
+          icon: Icons.user,
+        },
+      ],
+    },
+    config: {
+      showUser: true,
+      collapsible: "icon",
+    },
+  },
 };
 
-// Helper function to get sidebar configuration by role
 export function getSidebarConfig(role: DashboardRole) {
   return sidebarConfigurations[role];
 }
-
-// Export individual data for backward compatibility if needed
-export const adminSidebarData = sidebarConfigurations.admin.data;
-export const leaderSidebarData = sidebarConfigurations.leader.data;
-export const memberSidebarData = sidebarConfigurations.member.data;

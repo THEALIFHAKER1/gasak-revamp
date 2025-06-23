@@ -929,7 +929,7 @@ function NavUser({
   user: {
     name: string;
     email: string;
-    avatar: string;
+    image: string | null;
   };
 }) {
   const { isMobile, state } = useSidebar();
@@ -963,8 +963,12 @@ function NavUser({
               size="lg"
               className="bg-background hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground border shadow-xs"
             >
+              {" "}
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarImage
+                  src={user.image ?? "/avatars/default.jpg"}
+                  alt={user.name}
+                />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 overflow-hidden text-left text-sm leading-tight">
