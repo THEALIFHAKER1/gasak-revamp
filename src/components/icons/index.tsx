@@ -61,4 +61,5 @@ export const Icons = {
   crown: IconCrown,
   trendingUp: IconTrendingUp,
   trendingDown: IconTrendingDown,
+  Plus: IconPlus,
 };

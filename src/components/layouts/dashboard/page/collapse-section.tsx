@@ -23,14 +23,6 @@ export function CollapseSection({
 }: CollapseSectionProps) {
   return (
     <div className={className}>
-      {actions && (
-        <div className="mb-2 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-lg font-semibold">
-            {title}
-          </div>
-          <div className="flex items-center gap-2">{actions}</div>
-        </div>
-      )}
       <Accordion
         type="single"
         collapsible
@@ -39,9 +31,10 @@ export function CollapseSection({
       >
         <AccordionItem value="item-1" className="border-none">
           <AccordionTrigger
-            className={`px-0 py-3 text-lg font-semibold hover:no-underline ${actions ? "hidden" : ""}`}
+            className="px-0 py-3 text-lg font-semibold hover:no-underline"
+            action={actions}
           >
-            {!actions && title}
+            {title}
           </AccordionTrigger>
           <AccordionContent className="rounded-lg border p-1">
             {children}

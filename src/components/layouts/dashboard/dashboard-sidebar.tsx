@@ -92,7 +92,7 @@ export function DashboardSidebar({
           logo={GasakLogo}
           title="GASAK"
           subtitle="Dashboard Management"
-        />{" "}
+        />
       </SidebarHeader>
       <SidebarContent>
         {isLoading ? (
@@ -100,7 +100,7 @@ export function DashboardSidebar({
         ) : (
           data.navMain && <NavMain items={data.navMain} />
         )}
-      </SidebarContent>{" "}
+      </SidebarContent>
       {config.showUser && (
         <SidebarFooter>
           {isLoading ? (
