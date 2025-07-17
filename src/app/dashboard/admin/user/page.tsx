@@ -5,6 +5,7 @@ import { DashboardPageHeading } from "@/components/layouts/dashboard/page/dashbo
 import { Button } from "@/components/ui/button";
 import UserTable from "./table-user";
 import FilterUserTable from "./filter-table-user";
+import { Card } from "@/components/ui/card";
 
 export default function AdminDashboardUserPage() {
   return (
@@ -36,10 +37,10 @@ export default function AdminDashboardUserPage() {
         }
         defaultOpen={true}
       >
-        <>
+        <Card className="space-y-2 p-2">
           <FilterUserTable />
           <UserTable />
-        </>
+        </Card>
       </CollapseSection>
     </>
   );
