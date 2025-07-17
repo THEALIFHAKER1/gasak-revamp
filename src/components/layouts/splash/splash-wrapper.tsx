@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "motion/react";
 import Loader from "./loader";
 import { useMounted } from "@/hooks/use-mounted";
 import useFirstload from "@/hooks/use-firstload";
-
 interface SplashWrapperProps {
   children: React.ReactNode;
 }
