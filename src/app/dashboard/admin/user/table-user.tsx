@@ -10,6 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
+import { Pagination } from "@/components/ui/pagination";
 
 // Static user data
 const mockUsers = [
@@ -104,41 +105,6 @@ function UserActions() {
         <Icons.close className="h-4 w-4" />
       </Button>
     </>
-  );
-}
-
-function Pagination() {
-  // Presentational only, no logic
-  return (
-    <div className="flex w-full items-center justify-between gap-2">
-      {/* Page numbers left */}
-      <div className="bg-background flex gap-1 rounded-lg p-2">
-        <Button variant="outline" size="sm" className="bg-muted font-bold">
-          1
-        </Button>
-        <Button variant="ghost" size="sm">
-          2
-        </Button>
-        <Button variant="ghost" size="sm">
-          3
-        </Button>
-        <span className="text-muted-foreground flex items-center px-2 text-xs">
-          ...
-        </span>
-        <Button variant="ghost" size="sm">
-          10
-        </Button>
-      </div>
-      {/* Arrows right */}
-      <div className="bg-background flex gap-1 rounded-lg p-2">
-        <Button variant="outline" size="sm" aria-label="Previous page">
-          <Icons.chevronRight className="h-4 w-4 rotate-180" />
-        </Button>
-        <Button variant="outline" size="sm" aria-label="Next page">
-          <Icons.chevronRight className="h-4 w-4" />
-        </Button>
-      </div>
-    </div>
   );
 }
 
