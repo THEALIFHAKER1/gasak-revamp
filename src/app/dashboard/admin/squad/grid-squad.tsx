@@ -66,7 +66,7 @@ export default function GridSquad() {
             {/* Background Image */}
             <div className="absolute inset-0">
               <Image
-                src={squad.backgroundImage || "/placeholder.svg"}
+                src={squad.backgroundImage}
                 alt={`${squad.name} background`}
                 fill
                 className="object-cover"
@@ -98,25 +98,12 @@ export default function GridSquad() {
 
                 <div className="flex items-center space-x-2 text-gray-200">
                   {/* Use Icons.crown if available, else fallback emoji */}
-                  {Icons.crown ? (
-                    <Icons.crown className="h-4 w-4" />
-                  ) : (
-                    <span role="img" aria-label="crown">
-                      👑
-                    </span>
-                  )}
+                  <Icons.crown className="h-4 w-4" />
                   <span className="text-xs font-medium">{squad.leader}</span>
                 </div>
 
                 <div className="flex items-center space-x-2 text-gray-200">
-                  {/* Use Icons.users if available, else fallback emoji */}
-                  {Icons.users ? (
-                    <Icons.users className="h-4 w-4" />
-                  ) : (
-                    <span role="img" aria-label="users">
-                      👥
-                    </span>
-                  )}
+                  <Icons.users className="h-4 w-4" />
                   <span className="text-xs font-medium">
                     {squad.memberCount}{" "}
                     {squad.memberCount === 1 ? "Member" : "Members"}
