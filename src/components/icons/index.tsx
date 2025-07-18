@@ -28,6 +28,7 @@ import {
   IconTrendingUp,
   IconTrendingDown,
   IconUsersGroup,
+  IconEye,
 } from "@tabler/icons-react";
 import type { IconProps } from "@tabler/icons-react";
 
@@ -66,4 +67,5 @@ export const Icons = {
 
   // Squad and User Management
   squad: IconUsersGroup,
+  view: IconEye,
 };

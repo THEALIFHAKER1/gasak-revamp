@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { Icons } from "@/components/icons";
 import { Pagination } from "@/components/ui/pagination";
+import { Button } from "@/components/ui/button";
+
 const squads = [
   {
     id: 1,
@@ -77,27 +79,49 @@ export default function GridSquad() {
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-            {/* Content */}
-            <div className="relative flex h-full flex-col justify-between p-6">
-              {/* Squad Logo - Top Right */}
-              <div className="flex justify-end">
-                <div className="tablet:p-3 rounded-full bg-white/20 p-1.5 backdrop-blur-sm">
-                  <Image
-                    src={squad.logo || "/placeholder.svg"}
-                    alt={`${squad.name} logo`}
-                    width={40}
-                    height={40}
-                    className="tablet:w-20 tablet:h-20 h-10 w-10 rounded-full"
-                  />
-                </div>
+            {/* Squad Logo - Top Right */}
+            <div className="absolute top-4 right-4">
+              <div className="tablet:p-3 rounded-full bg-white/20 p-1.5 backdrop-blur-sm">
+                <Image
+                  src={squad.logo || "/placeholder.svg"}
+                  alt={`${squad.name} logo`}
+                  width={40}
+                  height={40}
+                  className="tablet:h-20 tablet:w-20 h-10 w-10 rounded-full"
+                />
               </div>
+            </div>
 
-              {/* Squad Info - Bottom */}
+            {/* Actions - Absolute Bottom Right */}
+            <div className="absolute right-4 bottom-4 flex gap-1">
+              <Button
+                size={"icon"}
+                className="rounded-md bg-white/10 p-2 text-xs text-white hover:bg-white/20 focus:outline-none"
+              >
+                <Icons.view className="h-4 w-4" />
+              </Button>
+              <Button
+                size={"icon"}
+                className="rounded-md bg-white/10 p-2 text-xs text-white hover:bg-white/20 focus:outline-none"
+              >
+                <Icons.settings className="h-4 w-4" />
+              </Button>
+              <Button
+                size={"icon"}
+                className="rounded-md bg-red-500/80 p-2 text-xs text-white hover:bg-red-600 focus:outline-none"
+              >
+                <Icons.close className="h-4 w-4" />
+              </Button>
+            </div>
+
+            {/* Squad Info - Bottom Left */}
+            <div className="relative flex h-full flex-col justify-end p-6">
               <div className="space-y-1">
-                <h2 className="text-2xl font-bold text-white">{squad.name}</h2>
+                <h2 className="text-2xl font-bold text-nowrap text-white">
+                  {squad.name}
+                </h2>
 
                 <div className="flex items-center space-x-2 text-gray-200">
-                  {/* Use Icons.crown if available, else fallback emoji */}
                   <Icons.crown className="h-4 w-4" />
                   <span className="text-xs font-medium">{squad.leader}</span>
                 </div>
