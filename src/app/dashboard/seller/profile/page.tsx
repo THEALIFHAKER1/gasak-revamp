@@ -47,7 +47,7 @@ export default function SellerProfilePage() {
             </div>
           </div>
 
-          <div className="grid gap-4 laptop:grid-cols-2">
+          <div className="laptop:grid-cols-2 grid gap-4">
             <div>
               <label className="text-muted-foreground text-sm font-medium">
                 Email
@@ -64,7 +64,7 @@ export default function SellerProfilePage() {
               <label className="text-muted-foreground text-sm font-medium">
                 Store Name
               </label>
-              <p className="font-medium">John's Electronics Store</p>
+              <p className="font-medium">John&apos;s Electronics Store</p>
             </div>
             <div>
               <label className="text-muted-foreground text-sm font-medium">

@@ -1,7 +1,6 @@
 import { HeaderBreadcrumbs } from "@/components/layouts/dashboard/dashboard-header";
 import { DashboardPageHeading } from "@/components/layouts/dashboard/page/dashboard-page-heading";
 import { CollapseSection } from "@/components/layouts/dashboard/page/collapse-section";
-import { Icons } from "@/components/icons";
 import { IconCheck, IconShoppingCart } from "@tabler/icons-react";
 
 export default function SellerCompletedOrdersPage() {
@@ -57,7 +56,7 @@ export default function SellerCompletedOrdersPage() {
                   </div>
                 </div>
 
-                <div className="mt-3 grid gap-2 laptop:grid-cols-4">
+                <div className="laptop:grid-cols-4 mt-3 grid gap-2">
                   <div>
                     <label className="text-muted-foreground text-xs font-medium">
                       Order Date

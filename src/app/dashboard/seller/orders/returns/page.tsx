@@ -60,7 +60,7 @@ export default function SellerReturnsPage() {
                   </div>
                 </div>
 
-                <div className="mb-4 grid gap-2 laptop:grid-cols-3">
+                <div className="laptop:grid-cols-3 mb-4 grid gap-2">
                   <div>
                     <label className="text-muted-foreground text-xs font-medium">
                       Request Date
@@ -92,8 +92,9 @@ export default function SellerReturnsPage() {
                     Return Reason
                   </label>
                   <p className="mt-1 rounded border bg-white p-2 text-sm">
-                    "The product arrived damaged and doesn't match the
-                    description. I would like to return it for a full refund."
+                    &quot;The product arrived damaged and doesn&apos;t match the
+                    description. I would like to return it for a full
+                    refund.&quot;
                   </p>
                 </div>
 

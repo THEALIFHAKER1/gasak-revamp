@@ -2,7 +2,6 @@ import { HeaderBreadcrumbs } from "@/components/layouts/dashboard/dashboard-head
 import { DashboardPageHeading } from "@/components/layouts/dashboard/page/dashboard-page-heading";
 import { CollapseSection } from "@/components/layouts/dashboard/page/collapse-section";
 import { DashboardStats } from "@/components/layouts/dashboard/page/dashboard-stats";
-import { Icons } from "@/components/icons";
 import {
   IconShoppingCart,
   IconClock,

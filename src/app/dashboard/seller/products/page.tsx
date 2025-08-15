@@ -2,8 +2,7 @@ import { HeaderBreadcrumbs } from "@/components/layouts/dashboard/dashboard-head
 import { DashboardPageHeading } from "@/components/layouts/dashboard/page/dashboard-page-heading";
 import { CollapseSection } from "@/components/layouts/dashboard/page/collapse-section";
 import { Icons } from "@/components/icons";
-import { IconPackage, IconPlus } from "@tabler/icons-react";
-import { Button } from "@/components/ui/button";
+import { IconPackage } from "@tabler/icons-react";
 
 export default function SellerProductsPage() {
   return (
@@ -17,12 +16,6 @@ export default function SellerProductsPage() {
       <DashboardPageHeading
         title="My Products"
         description="Manage your product listings and inventory."
-        action={
-          <Button>
-            <IconPlus className="mr-2 h-4 w-4" />
-            Add Product
-          </Button>
-        }
       />
 
       <CollapseSection
@@ -39,7 +32,7 @@ export default function SellerProductsPage() {
             Your active product listings will be displayed here in a table
             format with options to edit, delete, or manage inventory.
           </p>
-          <div className="grid gap-4 laptop:grid-cols-2 desktop:grid-cols-3">
+          <div className="laptop:grid-cols-2 desktop:grid-cols-3 grid gap-4">
             {/* Placeholder product cards */}
             {[1, 2, 3].map((i) => (
               <div key={i} className="bg-background rounded-lg border p-4">
