@@ -5,6 +5,7 @@ import { useDashboardLayout } from "@/contexts/dashboard-layout-context";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import ThemeToggle from "@/components/theme-toggle";
+import { BrandSwitcher } from "@/components/brand/brand-switcher";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -104,6 +105,7 @@ export function DashboardHeader() {
         {headerSlot}
       </div>
       <div className="ml-auto flex items-center gap-2 px-4">
+        <BrandSwitcher />
         <ThemeToggle />
       </div>
     </header>

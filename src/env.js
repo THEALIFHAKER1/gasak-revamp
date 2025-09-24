@@ -24,7 +24,9 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    // Brand configuration
+    NEXT_PUBLIC_BRAND_ID: z.string().optional(),
+    NEXT_PUBLIC_BRAND_ASSETS_URL: z.string().url().optional(),
   },
 
   /**
@@ -36,6 +38,9 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     UPLOADTHING_TOKEN: process.env.UPLOADTHING_TOKEN,
     NODE_ENV: process.env.NODE_ENV,
+    // Brand configuration
+    NEXT_PUBLIC_BRAND_ID: process.env.NEXT_PUBLIC_BRAND_ID,
+    NEXT_PUBLIC_BRAND_ASSETS_URL: process.env.NEXT_PUBLIC_BRAND_ASSETS_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

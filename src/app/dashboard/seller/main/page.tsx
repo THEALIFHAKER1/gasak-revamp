@@ -8,6 +8,7 @@ import {
   IconPackage,
   IconTrendingUp,
 } from "@tabler/icons-react";
+import { BrandDashboardWelcome } from "@/components/brand/brand-aware-content";
 
 export default function SellerDashboardMainPage() {
   return (
@@ -19,10 +20,7 @@ export default function SellerDashboardMainPage() {
           { label: "Main Dashboard" },
         ]}
       />
-      <DashboardPageHeading
-        title="Welcome back, Seller! 🛍️"
-        description="Manage your products, track sales, and grow your business."
-      />
+      <BrandDashboardWelcome role="seller" />
 
       <CollapseSection
         title={

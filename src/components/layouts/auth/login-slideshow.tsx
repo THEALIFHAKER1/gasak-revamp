@@ -11,6 +11,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { useBrand } from "@/components/providers/brand-provider";
 
 const slides = [
   {
@@ -48,6 +49,7 @@ const slides = [
 ];
 
 export default function LoginSlideshow() {
+  const { brand, getAssetUrl } = useBrand();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
@@ -125,14 +127,19 @@ export default function LoginSlideshow() {
       <div className="relative z-20 flex items-center p-10 pb-0">
         <div className="bg-background/40 flex items-center space-x-3 rounded-xl p-2">
           <div className="text-primary-foreground flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg">
-            <Image src="/logo.png" alt="GASAK" width={50} height={50} />
+            <Image
+              src={getAssetUrl("logo")}
+              alt={brand.metadata.name}
+              width={50}
+              height={50}
+            />
           </div>
           <div className="grid flex-1 overflow-hidden text-left leading-tight">
             <span className="truncate overflow-hidden text-xl font-bold tracking-wide whitespace-nowrap text-white">
-              GASAK
+              {brand.metadata.name}
             </span>
             <span className="truncate overflow-hidden text-sm whitespace-nowrap text-white/70">
-              Esports Platform
+              {brand.metadata.tagline}
             </span>
           </div>
         </div>

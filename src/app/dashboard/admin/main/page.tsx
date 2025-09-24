@@ -1,9 +1,9 @@
 import { HeaderBreadcrumbs } from "@/components/layouts/dashboard/dashboard-header";
-import { DashboardPageHeading } from "@/components/layouts/dashboard/page/dashboard-page-heading";
 import { CollapseSection } from "@/components/layouts/dashboard/page/collapse-section";
 import { DashboardStats } from "@/components/layouts/dashboard/page/dashboard-stats";
 import { Icons } from "@/components/icons";
 import { IconChartBar } from "@tabler/icons-react";
+import { BrandDashboardWelcome } from "@/components/brand/brand-aware-content";
 
 export default function AdminDashboardMainPage() {
   return (
@@ -15,10 +15,7 @@ export default function AdminDashboardMainPage() {
           { label: "Main Dashboard" },
         ]}
       />
-      <DashboardPageHeading
-        title="Welcome back, Admin! 👋"
-        description="Manage your esports organization and oversee all operations."
-      />
+      <BrandDashboardWelcome role="admin" />
 
       <CollapseSection
         title={

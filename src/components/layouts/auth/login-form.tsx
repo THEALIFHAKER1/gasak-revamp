@@ -20,8 +20,10 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
+import { useBrand } from "@/components/providers/brand-provider";
 
 export default function LoginForm() {
+  const { brand } = useBrand();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl");
 
@@ -66,10 +68,10 @@ export default function LoginForm() {
       <Card className="w-full max-w-md shadow-md">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-semibold">
-            Welcome back!
+            {brand.content.auth.loginTitle}
           </CardTitle>
           <CardDescription className="text-muted-foreground text-center">
-            Sign in to your GASAK Esport account
+            {brand.content.auth.loginSubtitle}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -85,7 +87,7 @@ export default function LoginForm() {
                   name="email"
                   label="Email"
                   type="email"
-                  placeholder="john.doe@gasak.com"
+                  placeholder={`john.doe@${brand.metadata.url.replace("https://", "").replace("http://", "")}`}
                   autoComplete="off"
                 />
                 <FormInput
@@ -121,7 +123,7 @@ export default function LoginForm() {
                   ← Back to homepage
                 </Link>
                 <Link
-                  href="https://wa.me/60199393473?text=Hi,%20I%20need%20help%20with%20logging%20into%20my%20GASAK%20Esport%20account."
+                  href={`https://wa.me/60199393473?text=Hi,%20I%20need%20help%20with%20logging%20into%20my%20${brand.metadata.name}%20account.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 text-sm transition-colors"

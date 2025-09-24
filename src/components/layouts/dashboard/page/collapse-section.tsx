@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
@@ -30,11 +32,18 @@ export function CollapseSection({
         className="w-full"
       >
         <AccordionItem value="item-1" className="border-none">
-          <AccordionTrigger
-            className="px-0 py-3 text-lg font-semibold hover:no-underline"
-            action={actions}
-          >
-            {title}
+          <AccordionTrigger className="px-0 py-3 text-lg font-semibold hover:no-underline">
+            <div className="flex w-full items-center justify-between">
+              <div className="flex items-center gap-2">{title}</div>
+              {actions && (
+                <div
+                  className="flex items-center gap-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {actions}
+                </div>
+              )}
+            </div>
           </AccordionTrigger>
           <AccordionContent className="rounded-lg border p-1">
             {children}

@@ -1,5 +1,27 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 🎨 White-Label Brand System
+
+This application features a comprehensive white-label brand system that allows multiple brands to use the same codebase with different:
+
+- **Branding & Assets**: Logos, favicons, and images
+- **Color Schemes**: Brand-specific color palettes
+- **Content & Copy**: Customizable text throughout the app
+- **Metadata & SEO**: Dynamic titles, descriptions, and social sharing
+- **Environment Control**: Brand selection via environment variables
+
+### Quick Brand Setup
+
+1. Set your brand in `.env`:
+
+```bash
+NEXT_PUBLIC_BRAND_ID=your-brand-id
+```
+
+2. Visit `/brand-demo` to test brand switching
+
+3. See full documentation: [White-Label System Guide](./docs/WHITE_LABEL_SYSTEM.md)
+
 ## Getting Started
 
 First, run the development server:
